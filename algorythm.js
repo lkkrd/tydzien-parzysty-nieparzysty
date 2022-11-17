@@ -1,27 +1,26 @@
-const trzyDni = 86400000 * 3;
-const date = new Date();
-const x = Date.now() - trzyDni;
-const y = 604800000;
-const i = Math.floor(x / y);
-const smthToChange = document.querySelector(".smth-to-change");
+function weekIsEven() {
+  let threeDays = 86400000 * 3;
+  //we will use it to set timeCount
+  let timeCount = Date.now() - threeDays;
+  //timeCount is how many ms passed sice 1st monday of 1st week
+  let weekDuration = 604800000;
+  //weekDuration is how many ms is in whole week
+  let weekCount = Math.floor(timeCount / weekDuration);
+  //weekCount is how many weeks passed since 1st monday
 
-function tydzParzysty() {
-  console.log("tydzien parzysty");
-  smthToChange.style.color = "lightgreen";
-  smthToChange.style.backgroundColor = "blue";
-}
-
-function tydzNieparzysty() {
-  smthToChange.style.color = "yellow";
-  smthToChange.style.backgroundColor = "red";
-  console.log("tydzien nieparzysty");
-}
-
-function whatDay() {
-  if (i % 2 == 0) {
-    tydzParzysty();
-    return;
+  if (weekCount % 2 == 0) {
+    return true;
   }
-  tydzNieparzysty();
-  return;
+  return false;
+}
+
+function callWeek() {
+  switch (weekIsEven()) {
+    case true:
+      console.log("tydzien parzysty");
+      break;
+    case false:
+      console.log("tydzien nieparzysty");
+      break;
+  }
 }
