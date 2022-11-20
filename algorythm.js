@@ -1,3 +1,5 @@
+const currentDate = new Date();
+
 function weekIsEven() {
   let threeDays = 86400000 * 3;
   //we will use it to set timeCount
@@ -23,4 +25,5 @@ function callWeek() {
       console.log("tydzien nieparzysty");
       break;
   }
+  return;
 }
